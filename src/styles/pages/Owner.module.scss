@@ -1,0 +1,79 @@
+$strokes-secondady: #e6e6e6;
+$background-secondary: #f3f3f3;
+$strokes-primary: #d4d4d4;
+$gray: #838383;
+
+.owner {
+  position: relative;
+  height: 100%;
+  &__header {
+    height: 200px;
+    background-color: $strokes-secondady;
+  }
+  &__main {
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+    &__avatar {
+      position: absolute;
+      top: -51px;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      background-color: $strokes-secondady;
+      border: 1px $background-secondary solid;
+      border-radius: 50px;
+      p {
+        font-size: 36px;
+        line-height: 100px;
+      }
+    }
+    &__container {
+      padding-top: 85px;
+      display: flex;
+      justify-content: space-between;
+      &__userdata {
+        span {
+          margin-bottom: 10px;
+          font-size: 30px;
+          font-weight: 500;
+          line-height: 42px;
+        }
+        p {
+          margin-bottom: 30px;
+          font-size: 16px;
+          line-height: 25.6px;
+          color: $gray;
+        }
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 40px;
+        border: 1px $strokes-primary solid;
+        border-radius: 5px;
+        p {
+          margin-left: 13px;
+          font-size: 16;
+          font-weight: 500;
+          line-height: 25.6px;
+        }
+      }
+    }
+    &__description {
+      margin-bottom: 60px;
+      max-width: 600px;
+    }
+    &__signOut {
+      width: 130px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px $strokes-primary solid;
+      border-radius: 5px;
+    }
+  }
+}

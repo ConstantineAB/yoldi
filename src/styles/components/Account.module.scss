@@ -1,0 +1,31 @@
+$strokes-secondady: #e6e6e6;
+$gray: #838383;
+
+.account {
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px $strokes-secondady solid;
+  &__icon {
+    width: 50px;
+    height: 50px;
+    border: 1px $strokes-secondady solid;
+    border-radius: 25px;
+    p {
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+  &__title {
+    margin: 0px auto 0px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25.6px;
+  }
+  &__email {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.6px;
+    color: $gray;
+  }
+}

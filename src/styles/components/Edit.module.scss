@@ -1,0 +1,128 @@
+$background-secondary: #f3f3f3;
+$background-primary: #fff;
+$strokes-primary: #d4d4d4;
+$gray: #838383;
+
+.edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__inner {
+    padding: 30px;
+    background-color: #fff;
+    z-index: 50;
+    &__title {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 42px;
+      margin-bottom: 25px;
+    }
+    &__name {
+      margin-bottom: 15px;
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 25.6px;
+        color: $gray;
+        margin-bottom: 5px;
+      }
+      input {
+        width: calc(100% - 42px);
+        padding: 12px 20px;
+        border: 1px $gray solid;
+        border-radius: 5px;
+      }
+    }
+    &__address {
+      margin-bottom: 15px;
+      &__title {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 25.6px;
+        color: $gray;
+        margin-bottom: 5px;
+      }
+      &__input {
+        width: 100%;
+        display: flex;
+        border: 1px $gray solid;
+        border-radius: 5px;
+        &__example {
+          padding: 10px;
+          background-color: $background-secondary;
+          border-radius: 5px;
+          p {
+            color: $gray;
+            margin-bottom: 5px;
+          }
+        }
+        input {
+          width: calc(100% - 42px);
+          padding: 12px 20px;
+          border: 0px;
+          border-radius: 5px;
+        }
+      }
+    }
+    &__description {
+      &__title {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 25.6px;
+        color: $gray;
+      }
+      textarea {
+        padding: 12px 20px;
+        background-color: $background-primary;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: '__Inter_9c9965', '__Inter_Fallback_9c9965';
+        line-height: 25.6px;
+        border: 1px $strokes-primary solid;
+        border-radius: 5px;
+        resize: none;
+      }
+    }
+    &__buttons {
+      margin-top: 25px;
+      &__cancel {
+        width: calc(50% - 5px);
+        line-height: 48px;
+        margin-right: 10px;
+        border: 1px #000 solid;
+        border-radius: 5px;
+        background-color: $background-primary;
+        p {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+      &__save {
+        width: calc(50% - 5px);
+        line-height: 48px;
+        border-radius: 5px;
+        border: 1px #000 solid;
+        border-radius: 5px;
+        background-color: #000;
+        p {
+          font-size: 16px;
+          font-weight: 500;
+          color: #fff;
+        }
+      }
+    }
+  }
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
