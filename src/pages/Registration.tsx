@@ -95,7 +95,14 @@ const Registration: React.FC = () => {
               )}
             </button>
           </div>
-          <button className={styles.registration__bar__button} onClick={() => postRegistration()}>
+          <button
+            className={styles.registration__bar__button}
+            style={
+              name !== '' && email !== '' && password !== ''
+                ? { backgroundColor: '#000', color: '#fff' }
+                : {}
+            }
+            onClick={() => postRegistration()}>
             <p>Создать аккаунт</p>
           </button>
         </div>
@@ -106,3 +113,4 @@ const Registration: React.FC = () => {
 };
 
 export default Registration;
+
