@@ -14,6 +14,7 @@ $gray: #838383;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 50;
   &__inner {
     width: 600px;
     padding: 30px;
