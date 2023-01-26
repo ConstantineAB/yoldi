@@ -47,11 +47,8 @@ const Login = () => {
 
   const [passwordOpen, setPasswordOpen]: any = React.useState(true);
   let toggleType: any = passwordOpen === true ? 'password' : 'text';
-  
-  let toggleButton =
-    email !== '' && password !== ''
-      ? { backgroundColor: '#000', color: '#fff' }
-      : {};
+
+  let toggleButton = email && password !== '' ? { backgroundColor: '#000', color: '#fff' } : {};
 
   return (
     <>
