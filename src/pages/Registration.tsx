@@ -52,10 +52,7 @@ const Registration: React.FC = () => {
   const [passwordOpen, setPasswordOpen]: any = React.useState(true);
   let toggleType: any = passwordOpen === true ? 'password' : 'text';
   
-  let toggleButton =
-    name === '' && email === '' && password === ''
-      ? {}
-      : { backgroundColor: '#000', color: '#fff' };
+  let toggleButton = name && email && password !== '' ? { backgroundColor: '#000', color: '#fff' } : {};
 
 
   return (
