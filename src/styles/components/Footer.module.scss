@@ -8,6 +8,7 @@ $gray: #838383;
   justify-content: center;
   align-items: center;
   border-top: 1px $strokes-secondady solid;
+  z-index: 40;
   &__wrapper {
     display: flex;
     align-items: center;
