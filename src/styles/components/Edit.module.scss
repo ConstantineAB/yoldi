@@ -135,7 +135,7 @@ $gray: #838383;
 
 @media (max-width: 480px) {
   .edit {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -146,7 +146,8 @@ $gray: #838383;
     justify-content: center;
     align-items: center;
     &__inner {
-      padding-top: 80px;
+      margin-top: -80px;
+      padding-bottom: 80px;
       height: 100%;
       &__description {
         height: max-content;
