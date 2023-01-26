@@ -4,8 +4,17 @@ $strokes-primary: #d4d4d4;
 $gray: #838383;
 
 .registration {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100vw;
+  height: calc(100vh - 145px);
   display: flex;
   justify-content: center;
   align-items: center;
