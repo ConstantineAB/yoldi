@@ -47,6 +47,11 @@ const Login = () => {
 
   const [passwordOpen, setPasswordOpen]: any = React.useState(true);
   let toggleType: any = passwordOpen === true ? 'password' : 'text';
+  
+  let toggleButton =
+    email !== '' && password !== ''
+      ? { backgroundColor: '#000', color: '#fff' }
+      : {};
 
   return (
     <>
@@ -80,9 +85,7 @@ const Login = () => {
           </div>
           <button
             className={styles.login__bar__button}
-            style={
-              email !== '' && password !== '' ? { backgroundColor: '#000', color: '#fff' } : {}
-            }
+            style={toggleButton}
             onClick={() => postLogin()}>
             <p>Войти</p>
           </button>
