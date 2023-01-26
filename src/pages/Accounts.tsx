@@ -3,12 +3,11 @@ import styles from '@/styles/pages/Accounts.module.scss';
 import Account from '@/components/Account';
 import useSWR from 'swr';
 import axios from 'axios';
-
-const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+import { userUrl } from '@/http';
 
 const Accounts: React.FC = () => {
-  const { data, error } = useSWR('https://frontend-test-api.yoldi.agency/api/user', fetcher);
-  console.log(data);
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  const { data, error } = useSWR(userUrl, fetcher);
 
   return (
     <div className={styles.accounts}>

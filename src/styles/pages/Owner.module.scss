@@ -3,12 +3,75 @@ $background-secondary: #f3f3f3;
 $strokes-primary: #d4d4d4;
 $gray: #838383;
 
+.hidden {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
 .owner {
   position: relative;
   height: 100%;
   &__header {
+    position: relative;
     height: 200px;
     background-color: $strokes-secondady;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    &__load {
+      width: 195px;
+      height: 40px;
+      position: absolute;
+      justify-content: space-evenly;
+      align-items: center;
+      display: flex;
+      left: calc(50% - 97px);
+      background-color: $background-secondary;
+      border: 1px $strokes-primary solid;
+      border-radius: 5px;
+      p {
+        line-height: 40px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    &__select {
+      width: 195px;
+      height: 40px;
+      position: absolute;
+      left: calc(50% - 97px);
+      background-color: $background-secondary;
+      border: 1px $strokes-primary solid;
+      border-radius: 5px;
+      p {
+        width: 100%;
+        line-height: 40px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    &__trash {
+      width: 195px;
+      height: 40px;
+      position: absolute;
+      justify-content: space-evenly;
+      align-items: center;
+      left: calc(50% - 97px);
+      background-color: $background-secondary;
+      border: 1px $strokes-primary solid;
+      border-radius: 5px;
+      p {
+        line-height: 40px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
   }
   &__main {
     margin: 0 auto;
@@ -23,9 +86,57 @@ $gray: #838383;
       background-color: $strokes-secondady;
       border: 1px $background-secondary solid;
       border-radius: 50px;
+      overflow: hidden;
+      cursor: pointer;
       p {
+        position: absolute;
+        top: 0px;
+        width: 100px;
         font-size: 36px;
         line-height: 100px;
+        z-index: 1;
+      }
+      img {
+        border-radius: 100px;
+      }
+      &__load {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 1px;
+        text-align: center;
+        p {
+          width: 100%;
+          font-size: 18px;
+          color: $strokes-primary;
+        }
+      }
+      &__select {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 20;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 10;
+          transition: all 0.3s;
+        }
+        p {
+          width: 100%;
+          font-size: 18px;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.7);
+        }
       }
     }
     &__container {
@@ -47,11 +158,11 @@ $gray: #838383;
         }
       }
       button {
+        width: 200px;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 200px;
-        height: 40px;
         border: 1px $strokes-primary solid;
         border-radius: 5px;
         p {
@@ -69,11 +180,38 @@ $gray: #838383;
     &__signOut {
       width: 130px;
       height: 40px;
+      margin-bottom: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
       border: 1px $strokes-primary solid;
       border-radius: 5px;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .owner {
+    &__main {
+      margin: 0 30px;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .owner {
+    &__main {
+      &__container {
+        display: flex;
+        flex-direction: column;
+        &__userdata {
+          p {
+            margin-bottom: 10px;
+          }
+        }
+        button {
+          margin-bottom: 30px;
+        }
+      }
     }
   }
 }

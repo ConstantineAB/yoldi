@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '@/styles/components/Edit.module.scss';
-import useSWR, { mutate } from 'swr';
+import useSWR from 'swr';
 import { profileUrl } from '@/http';
 import axios from 'axios';
 import Cookie from 'js-cookie';
@@ -10,33 +10,45 @@ interface myProps {
   setOpenModal: Function;
   slug: string;
   imageId: null | object;
-  mutate: Function;
+  mutate: any;
 }
 
-const Edit: React.FC<myProps> = ({ openModal, setOpenModal, slug, mutate }) => {
+// Сделать patch в Postman
+
+const Edit: React.FC<myProps> = ({ openModal, setOpenModal, slug, imageId, mutate }) => {
   let toggleModal: object = openModal === !false ? { display: 'flex' } : { display: 'none' };
 
-  const [name, setName]: any = React.useState();
+  const [upname, setUpName]: any = React.useState();
 
   const patchFetcher: any = () =>
     axios
-      .patch(
-        profileUrl,
-        {
-          name: name,
-          slug: slug,
+      .patch(profileUrl, {
+        data: {
+          name: upname,
+          password: '142486',
+          slug: 'constantine--email.com',
+          imageId: null,
         },
-        {
-          headers: {
-            'x-api-key': Cookie.get('x-api-key'),
-          },
-        },
-      )
-      .then(() => mutate())
-      .then(setOpenModal(!openModal))
+      })
+      .then((response) => {
+        console.log(response);
+        () => mutate();
+      })
       .catch((error) => {
         console.log(error);
       });
+
+  console.log(
+    {
+      'x-api-key': Cookie.get('x-api-key'),
+    },
+    {
+      name: upname,
+      imageId: null,
+      password: '142486',
+      slug: slug,
+    },
+  );
 
   return (
     <div className={styles.edit} style={toggleModal}>
@@ -44,7 +56,7 @@ const Edit: React.FC<myProps> = ({ openModal, setOpenModal, slug, mutate }) => {
         <p className={styles.edit__inner__title}>Редактировать профиль</p>
         <div className={styles.edit__inner__name}>
           <p>Имя</p>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <input type="text" value={upname} onChange={(e) => setUpName(e.target.value)} />
         </div>
         <div className={styles.edit__inner__address}>
           <p className={styles.edit__inner__address__title}>Адрес профиля</p>

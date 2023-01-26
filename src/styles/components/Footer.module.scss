@@ -19,8 +19,11 @@ $gray: #838383;
     }
     &__button {
       font-size: 16px;
-      font-weight: 500;
-      line-height: 25.6px;
+      font-family: '__Inter_9c9965', '__Inter_Fallback_9c9965';
+      p {
+        font-weight: 500;
+        line-height: 25.6px;
+      }
     }
   }
 }

@@ -4,35 +4,49 @@ import Image from 'next/image';
 import Envelope from '../../public/images/icons/envelope.svg';
 import Lock from '../../public/images/icons/lock-solid.svg';
 import Eye from '../../public/images/icons/eye-solid.svg';
+import GreyEye from '../../public/images/icons/grey-eye-solid.svg';
 import Footer from '@/components/Footer';
 import { useSWRConfig } from 'swr';
 import axios from 'axios';
+import { loginUrl } from '@/http';
+import Cookie from 'js-cookie';
+import { useRouter } from 'next/router';
 
-const Login: React.FC = () => {
-  const url: string = 'https://frontend-test-api.yoldi.agency/api/auth/login';
+const Login = () => {
   const { mutate } = useSWRConfig();
+
+  const router: any = useRouter();
 
   const [email, setEmail]: any = React.useState();
   const [password, setPassword]: any = React.useState();
+  const [authorized, setAuthorized]: any = React.useState(false);
 
   const postLogin: Function = async () => {
-    mutate(
+    await mutate(
       axios
-        .post(url, {
+        .post(loginUrl, {
           email: email,
           password: password,
         })
         .then((res) => {
-          console.log(res.data);
-          setEmail(''), setPassword('');
+          Cookie.set('x-api-key', res.data.value);
         })
+        .then(setEmail(''), setPassword(''))
+        .then(setAuthorized(!authorized))
         .catch((error) => {
           console.log(error);
         }),
     );
   };
 
+  if (authorized === true) {
+    router.push('/Profile');
+  }
+
   const login = true;
+
+  const [passwordOpen, setPasswordOpen]: any = React.useState(true);
+  let toggleType: any = passwordOpen === true ? 'password' : 'text';
 
   return (
     <>
@@ -44,19 +58,25 @@ const Login: React.FC = () => {
             <input
               type="text"
               placeholder="E-mail"
-              onChange={(e: any) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
           </div>
           <div className={styles.login__bar__input}>
             <Image src={Lock} alt="Lock" />
             <input
-              type="text"
+              type={toggleType}
               placeholder="Пароль"
-              onChange={(e: any) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
-            <Image src={Eye} alt="Eye" />
+            <button onClick={() => setPasswordOpen(!passwordOpen)}>
+              {passwordOpen === false ? (
+                <Image src={Eye} alt="Eye" />
+              ) : (
+                <Image src={GreyEye} alt="GreyEye" />
+              )}
+            </button>
           </div>
           <button className={styles.login__bar__button} onClick={() => postLogin()}>
             <p>Войти</p>

@@ -1,7 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
+import styles from '@/styles/pages/Accounts.module.scss';
+import Account from '@/components/Account';
+import useSWR from 'swr';
+import axios from 'axios';
+import { userUrl } from '@/http';
 
 const Home: React.FC = () => {
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  const { data, error } = useSWR(userUrl, fetcher);
+
   return (
     <>
       <Head>
@@ -10,6 +18,16 @@ const Home: React.FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className={styles.accounts}>
+        <div className={styles.accounts__inner}>
+          <p className={styles.accounts__inner__title}>Список аккаунтов</p>
+          <div className={styles.accounts__inner__list}>
+            {data?.map((obj: any) => (
+              <Account {...obj} key={obj.id} />
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 };

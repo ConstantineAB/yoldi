@@ -16,7 +16,9 @@ const Footer: React.FC<buttonProps> = ({ login, registration }) => {
         <div className={styles.footer__wrapper}>
           <p className={styles.footer__wrapper__title}>Уже есть аккаунт?</p>
           <Link href="Login">
-            <button className={styles.footer__wrapper__button}>Войти</button>
+            <button className={styles.footer__wrapper__button}>
+              <p>Войти</p>
+            </button>
           </Link>
         </div>
       )}
@@ -26,7 +28,9 @@ const Footer: React.FC<buttonProps> = ({ login, registration }) => {
         <div className={styles.footer__wrapper}>
           <p className={styles.footer__wrapper__title}>Еще нет аккаунта?</p>
           <Link href="Registration">
-            <button className={styles.footer__wrapper__button}>Зарегистрироваться</button>
+            <button className={styles.footer__wrapper__button}>
+              <p>Зарегистрироваться</p>
+            </button>
           </Link>
         </div>
       )}
