@@ -51,6 +51,12 @@ const Registration: React.FC = () => {
 
   const [passwordOpen, setPasswordOpen]: any = React.useState(true);
   let toggleType: any = passwordOpen === true ? 'password' : 'text';
+  
+  let toggleButton =
+    name !== '' && email !== '' && password !== ''
+      ? { backgroundColor: '#000', color: '#fff' }
+      : {};
+
 
   return (
     <>
@@ -97,11 +103,7 @@ const Registration: React.FC = () => {
           </div>
           <button
             className={styles.registration__bar__button}
-            style={
-              name !== '' && email !== '' && password !== ''
-                ? { backgroundColor: '#000', color: '#fff' }
-                : {}
-            }
+            style={toggleButton}
             onClick={() => postRegistration()}>
             <p>Создать аккаунт</p>
           </button>
